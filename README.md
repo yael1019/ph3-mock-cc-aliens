@@ -1,4 +1,4 @@
-# Object Relations Code Challenge - Aliens at Home
+# Phase 3 Mock Code Challenge - Aliens at Home
 
 For this challenge, we'll be working with a domain that involves aliens and their home planets.
 
