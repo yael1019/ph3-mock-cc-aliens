@@ -24,24 +24,19 @@ start coding_. Remember to identify a single source of truth for your data.
 
 ## Instructions
 
-To get started, run `pipenv install` while inside of this directory.
+To get started, run `pipenv install` while inside of this directory. Be sure to
+`cd` into the `lib` folder when you use the `debug.py` file.
 
 Build out all of the methods listed in the deliverables. The methods are listed
 in a suggested order, but you can feel free to tackle the ones you think are
 easiest. Be careful: some of the later methods rely on earlier ones.
 
-<!-- TODO: THIS MIGHT NOT BE TRUE SO DELETE IF NOT -->
-**Remember!** This code challenge is test-driven. You can run `pytest` at any
-time to check your work.
-You'll need to create your own sample instances so that you can try out your
-code on your own. Make sure your relationships and methods work in the console
-before submitting.
-
 We've provided you with a tool that you can use to test your code. To use it,
 run `python debug.py` from the command line. This will start a `ipdb` session
 with your classes defined. You can test out the methods that you write here. You
 can add code to the `debug.py` file to define variables and create sample
-instances of your objects.
+instances of your objects. There are no formal tests to run with this code so be
+sure to test it in the `debug.py` often.
 
 Writing error-free code is more important than completing all of the
 deliverables listed - prioritize writing methods that work over writing more
