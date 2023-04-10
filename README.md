@@ -4,28 +4,21 @@ For this challenge, we'll be working with a domain that involves aliens and thei
 
 We have two models: `Alien` and `Planet`.
 
-A `Planet` has many `Alien`s. An `Alien` belongs to a `Planet`.
-
-`Planet` - `Alien` is a one to many relationship.
-
-**Note**: You should draw your domain on paper or on a whiteboard _before you
-start coding_. Remember to identify a single source of truth for your data.
-
 ## Topics
 
 - Classes and Instances
 - Class and Instance Methods
 - Variable Scope
-- Object Relationships
 - lists and list Methods
 - SQL queries
 - ORM methods
-- Foreign keys
 
 ## Instructions
 
-To get started, run `pipenv install` while inside of this directory. Be sure to
-`cd` into the `lib` folder when you use the `debug.py` file.
+To get started, run `pipenv install` while inside of this directory.
+
+You will not have to build the tables as they'll be created for you
+automatically when you first run `debug.py`.
 
 Build out all of the methods listed in the deliverables. The methods are listed
 in a suggested order, but you can feel free to tackle the ones you think are
@@ -79,6 +72,9 @@ build out any helper methods if needed.
   - Returns an alien instance from the database with the matching id
   - The return value ought to be an Alien instance
   - Return None if no Planet exists with that id
+- `Alien delete()`
+  - Deletes the Alien from the database
+  - This method returns `None`
 
 #### Planet
 
@@ -95,20 +91,8 @@ build out any helper methods if needed.
   - Returns a planet instance from the database with the matching id
   - The return value ought to be a Planet instance
   - Return None if no Planet exists with that id
-
-### Object Relationship Methods
-
-#### Alien
-
-- `query_planet()`
-  - Returns the planet the alien lives on via the planet_id
-  - Returned Planets must be `Planet` instances
-
-#### Planet
-
-- `query_aliens()`
-  - Returns all aliens living on a planet via their planet_id
-  - Returned Aliens must be in a list of `Alien` instances
+- `BONUS: Full CRUD with Planet`
+  - Build out the methods for `.query_all()` and `.delete()`
 
 ### Aggregate and Association Methods
 

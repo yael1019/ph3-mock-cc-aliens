@@ -1,5 +1,4 @@
-from . import CONN, CURSOR
-from classes.planet import Planet
+from lib import CONN, CURSOR
 
 class Alien:
 
@@ -13,10 +12,6 @@ class Alien:
 
     def save(self):
         # updates the alien in the database
-        pass
-
-    def query_planet(cls):
-        # gets the alien's associated planet from the database and returns the planet as an instance
         pass
 
     @classmethod
