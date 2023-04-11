@@ -6,14 +6,21 @@ class Alien:
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
-        self._age = age
+        # not using the underscore will pass this through the age property, so will not let you initialize with an invalid value
+        # if we initialize with an invalid age then it will go through the getter fn and print the else statement bc _age was not set to anything
+        # so we do not have the attr _age, it was never initialized
+        self.age = age
 
     def __repr__(self) -> str:
         return f'< Alien id = {self.id} first_name = {self.first_name} last_name = {self.last_name} age = {self.age} >'
     
     # age property goes here
     def get_age(self):
-        return self._age
+        # checking if we have the attribute _age then return the age 
+        if hasattr(self, '_age'):
+            return self._age
+        else:
+            print('Invalid age')
     
     def set_age(self, age):
         if isinstance(age, int) and age >= 0:
@@ -28,11 +35,12 @@ class Alien:
 
     def save(self):
         if self.id:
-            self.update()
+            self._update()
         else:
-            self.create()
+            self._create()
     
-    def create(self):
+    # by putting the underscore we are saying that this is private we should not be calling _create(), instead we should be calling save()
+    def _create(self):
         sql = """
             INSERT INTO aliens (first_name, last_name, age)
             VALUES (?, ?, ?)
@@ -41,7 +49,7 @@ class Alien:
         CONN.commit()
         self.id = CURSOR.execute('SELECT * FROM aliens ORDER BY id DESC LIMIT 1').fetchone()[0]
 
-    def update(self):
+    def _update(self):
         sql = """
             UPDATE aliens 
             SET first_name = ?, last_name = ?, age =?
@@ -73,6 +81,12 @@ class Alien:
             return alien
         else:
             print('This alien does not exist')
+        
+        # OR -- we can use the list returned from query_all to grab the alien we want 
+        # all = cls.query_all()
+        # for alien in all:
+        #     if alien.id == id:
+        #         return alien
 
     def destroy(self):
         sql = """
@@ -94,6 +108,8 @@ class Alien:
         avg = sum(ages) / len(ages)
         return avg
 
+        # OR we can do this calling the query_all aswell
+
     @classmethod
     def query_oldest(cls):
         sql = """
@@ -104,5 +120,11 @@ class Alien:
         oldest_repr = Alien(oldest[1], oldest[2], oldest[3], oldest[0])
         return oldest_repr
 
+        # OR 
+        # sql = """
+        #     SELECT * FROM aliens
+        #     ORDER by age DESC
+        # """
 
-jane = Alien('Jane', 'Doe', 40)
+
+# jane = Alien('Jane', 'Doe', 40)
